@@ -1,0 +1,57 @@
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100" > 
+  
+  
+  <div class="bg-white shadow-lg rounded-2xl p-8 max-w-md w-full">
+      <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Iniciar Sesión</h2>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+        
+        <!-- Correo Electrónico -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+          <input id="email" formControlName="email" type="email" placeholder="Ingrese su correo"
+            class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            @if (email.invalid && email.touched) {
+                <div  class="text-red-500 text-xs mt-1">
+                    Ingrese un correo válido.
+                  </div>
+            }
+          
+        </div>
+  
+        <!-- Contraseña -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+          <input id="password" formControlName="password" type="password" placeholder="Ingrese su contraseña"
+            class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            @if (password.invalid && password.touched) {
+                <div  class="text-red-500 text-xs mt-1">
+                    La contraseña es obligatoria.
+                  </div>
+            }
+          
+        </div>
+  
+        <!-- Checkbox de términos y condiciones -->
+        <div class="flex items-center">
+          <input type="checkbox" id="terms" formControlName="terms" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+          <label for="terms" class="ml-2 block text-sm text-gray-700">Aceptar términos y condiciones</label>
+        </div>
+        @if (terms.invalid && terms.touched) {
+            <div  class="text-red-500 text-xs mt-1">
+                Debe aceptar los términos y condiciones.
+              </div>
+        }
+        
+  
+        <!-- Botón de iniciar sesión -->
+        <button type="submit" [disabled]="loginForm.invalid"
+          class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition disabled:bg-gray-300">
+          Iniciar Sesión
+        </button>
+      </form>
+    </div>
+  </div>
+
+  
